@@ -1,0 +1,97 @@
+body {
+  background-color: #111827;
+  color: #e5e7eb;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.contenedor {
+  margin: 40px auto;
+  max-width: 400px;
+  background-color: #1f2937;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+h1 { margin-bottom: 20px; }
+
+.estado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+#reiniciar {
+  background-color: #2563eb;
+  border: none;
+  padding: 6px 12px;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.tablero {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.celda {
+  background-color: #374151;
+  border-radius: 8px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.celda:hover {
+  background-color: #4b5563;
+}
+
+.celda.x { color: #facc15; }
+.celda.o { color: #60a5fa; }
+
+.mensaje {
+  margin-top: 15px;
+  min-height: 24px;
+}
+
+/* selección de jugadores */
+.seleccion {
+  margin-bottom: 20px;
+}
+
+.botones-seleccion {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.boton-seleccion {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.boton-seleccion:hover {
+  background-color: #1d4ed8;
+}
+
+/* ocultar secciones */
+.oculto {
+  display: none;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juego de Gato</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <main class="contenedor">
+    <h1>Juego de Gato</h1>
+
+    <div id="seleccion" class="seleccion">
+      <p>Selecciona tu símbolo:</p>
+      <div class="botones-seleccion">
+        <button id="btnX" class="boton-seleccion">Jugador X</button>
+        <button id="btnO" class="boton-seleccion">Jugador O</button>
+      </div>
+    </div>
+
+    <div id="juego" class="juego oculto">
+      <div class="estado">
+        <span id="turno">Turno: X</span>
+        <button id="reiniciar">Reiniciar</button>
+      </div>
+
+      <section class="tablero" id="tablero">
+        <div class="celda" data-index="0"></div>
+        <div class="celda" data-index="1"></div>
+        <div class="celda" data-index="2"></div>
+        <div class="celda" data-index="3"></div>
+        <div class="celda" data-index="4"></div>
+        <div class="celda" data-index="5"></div>
+        <div class="celda" data-index="6"></div>
+        <div class="celda" data-index="7"></div>
+        <div class="celda" data-index="8"></div>
+      </section>
+
+      <div id="mensaje" class="mensaje"></div>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
