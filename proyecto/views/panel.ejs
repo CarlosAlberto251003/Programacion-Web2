@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Usuarios</title>
+    <link rel="stylesheet" href="/estilos.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h2>Bienvenido, <%= user %></h2>
+            <a href="/logout" class="btn btn-red">Cerrar Sesión</a>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <button onclick="abrirModal('modalAgregar', event)" class="btn btn-green">
+                + Nuevo Usuario
+            </button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Permisos</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.forEach((usuario) => { %>
+                <tr>
+                    <td><%= usuario.id %></td>
+                    <td><%= usuario.nombre %></td>
+                    <td><%= usuario.email %></td>
+                    <td><%= usuario.permisos == 1 ? 'Admin' : 'Usuario' %></td>
+                    <td>
+                        <button class="btn btn-orange" 
+                            onclick="llenarEditar(event, '<%= usuario.id %>', '<%= usuario.nombre %>', '<%= usuario.email %>', '<%= usuario.contraseña %>', '<%= usuario.permisos %>')">
+                            Editar
+                        </button>
+                        
+                        <a href="/delete/<%= usuario.id %>" class="btn btn-red" onclick="return confirm('¿Eliminar?')">Borrar</a>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="modalAgregar" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('modalAgregar')">&times;</span>
+            <h2>Agregar Usuario</h2>
+            <br>
+            <form action="/save" method="POST">
+                <div class="form-group">
+                    <label>Nombre:</label>
+                    <input type="text" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Contraseña:</label>
+                    <input type="text" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label>Permisos:</label>
+                    <select name="permisos">
+                        <option value="0">Usuario</option>
+                        <option value="1">Administrador</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-green" style="width: 100%">Guardar</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="modalEditar" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('modalEditar')">&times;</span>
+            <h2>Editar Usuario</h2>
+            <br>
+            <form action="/update" method="POST">
+                <input type="hidden" name="id" id="edit_id">
+                
+                <div class="form-group">
+                    <label>Nombre:</label>
+                    <input type="text" name="nombre" id="edit_nombre" required>
+                </div>
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="email" name="email" id="edit_email" required>
+                </div>
+                <div class="form-group">
+                    <label>Contraseña:</label>
+                    <input type="text" name="password" id="edit_pass" required>
+                </div>
+                <div class="form-group">
+                    <label>Permisos:</label>
+                    <select name="permisos" id="edit_permisos">
+                        <option value="0">Usuario</option>
+                        <option value="1">Administrador</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-orange" style="width: 100%">Actualizar</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+<script src="/main.js"></script>
+</html>
